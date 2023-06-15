@@ -1,0 +1,29 @@
+@use 'base/variables';
+@use 'base/mixins';
+
+.sobre-festival {
+    padding: 5rem 0;
+    @include mixins.tablet {
+        //Para separar en dos columnas la imagen y los textos
+        @include mixins.grid(2, 5rem)//Mixin creado para las columnas y el espaciado de estas.
+    }
+}
+
+.contenido-festival {
+    display: flex;
+    flex-direction: column;//Es para dividir la columna
+    justify-content: center;//Y colocarla al centro, alinearla verticalmente
+    margin-top: 5rem;//Margen en general
+    @include mixins.tablet {
+        margin-top: 0;//Margen cuando a partir del tamaño de la tablet
+    }
+
+    h2 {
+        margin-bottom: 2rem; //Margenes
+    }
+
+    .fecha {
+        color: variables.$rosa; //Es el color de la letra
+        font-weight: bold;//Letra en negritas
+    }
+}

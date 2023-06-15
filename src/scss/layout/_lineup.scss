@@ -1,0 +1,81 @@
+@use 'base/variables'; //Es importante importar las variables y los mixins para que se puedan utilizar aquí
+@use 'base/mixins';
+
+.lineup {
+    background-color: variables.$rosa; //Color de fondo del apartado de LineUp
+    padding: 5rem 0; //Margenes
+
+    h3,
+    p {
+        text-align: center; //Para que esten en el centro
+        color: variables.$blanco; //Color del texto
+    }
+
+    .dia {
+        text-transform: uppercase; //Para que estén en mayúsculas las palabras
+        margin: 5rem 0; //Espacio de arriba y abajo
+    }
+}
+
+.escenarios-contenedor {
+    @include mixins.tablet {
+        @include mixins.grid(2, 5rem) //Creación de dos columnas a partir del tamaño de la tablet
+    }
+
+    p {
+        color: variables.$negro; //Los párrafos dentro de escenarios-contenedor serán de color negro el texto
+    }
+}
+
+.escenario {
+    padding-top: 2rem; //Espacio entre el principio del cuadro y el texto
+
+    p {
+
+        &:after {//Esto en sí, sólo agrega el espacio o el recuadro para colocar la imagen
+            content: ''; //Siempre tiene que haber un content cuando se utiliza un pseudoelemento
+            display:block;
+            width: 20rem;
+            height: 10rem;
+            background-size: 15rem;
+            background-repeat: no-repeat;//Para que no se repita la imagen de automático
+            background-position: center center;//Para que se centre horizontalmente
+            margin: 2rem auto 0 auto;//Para que se centre horizontalmente y tenga espacio entre texto y el ícono
+        }
+    }
+}
+
+.edm .nombre-escenario:after { //Se coloca donde irá la imagen después de compilarse
+    background-image: url(../img/icono_edm.png);
+}
+
+.rock .nombre-escenario:after { //Se coloca donde irá la imagen después de compilarse
+    background-image: url(../img/icono_rock.png);
+}
+
+.calendario {
+    @include mixins.resetear-lista;
+
+    li {
+        padding: 2.5rem;//Hace que la lista tenga espacio entre lineas
+        font-weight: 700;//La hora estará en negritas
+        span {
+            font-weight: 400;//El nombre del artista o de la banda estará normal
+        }
+    }
+}
+
+.bg-amarillo {
+    background-color: variables.$amarillo;
+
+    li :nth-child(odd) {//odd toma los impares para poner su recuadro de otro color
+        background-color: darken(variables.$amarillo, 15%); //Color y el porcentaje de oscurecimiento
+    }
+}
+
+.bg-verde {
+    background-color: variables.$verde;
+    li :nth-child(odd) {//odd toma los impares para poner su recuadro de otro color
+        background-color: darken(variables.$verde, 10%); //Color y el porcentaje de oscurecimiento
+    }
+}

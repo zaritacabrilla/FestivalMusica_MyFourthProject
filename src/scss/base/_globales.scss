@@ -1,0 +1,59 @@
+@use 'variables'; //Para poder usar las variables que están dentro de este archivo
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit; //Para que el pading no sea un problema
+}
+
+body {
+    font-family: variables.$fuente_principal;
+    font-size: 1.6rem;
+}
+
+p {
+    font-size: 2rem;
+    color: variables.$negro;
+    line-height: 1.5;
+}
+
+.contenedor {
+    width: 95%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0 0 5rem 0;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3.5rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+img {
+    //Selector de imagenes para que se ajusten al tamaño que les corresponde y no estén grandes
+    max-width: 100%;
+    //width: 100%; Para que la imagen se pueda ajustar correctamente con el width y el height del index
+    //height: auto; Para que la imagen se pueda ajustar correctamente con el width y el height del index
+    display: block;
+}

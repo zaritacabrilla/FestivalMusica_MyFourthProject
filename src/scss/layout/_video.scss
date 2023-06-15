@@ -1,0 +1,49 @@
+@use 'base/variables';//Es importante importar las variables y los mixins para que se puedan utilizar aquí
+@use 'base/mixins';
+
+.video {
+    position: relative;//Para que el texto se coloque encima del video
+    max-height: 70rem; //Para que el tamaño del video no ocupe toda la pantalla
+    min-height: 50rem;//Para que sea lo mínimo que pueda ocupar
+    overflow: hidden;//Ajusta los colores y el texto que tiene de acuerdo al tamaño que se le da.
+
+
+    .overlay {
+        position: absolute;//Para que el texto se coloque encima del video
+        background: rgb(166,0,255); //Enlace del degrado tomado de la aplicación
+        background: linear-gradient(270deg, rgba(166,0,255,0.5) 0%, rgba(255,0,82,0.3) 100%);
+        height: 100%;//Para que el degradado ocupe el tamaño del video.
+        width: 100%;//Para que el degradado ocupe el tamaño del video.
+        display: flex; //Es para que el texto quede del lado izquierdo y centrado en medio del video.
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    video { //Selecciona la etiqueta de video no la clase por eso no lleva el punto.
+        width: auto;//Para que el tamaño sea automático
+        display: block;//Para que se distribuya en toda la página completa el cuadrado del video.
+        @include mixins.desktop{
+            width: 100%;//Sólo se cumple este 100% hasta que llegue al tamaño del desktop
+        }
+    }
+}
+
+.contenido-video{
+    z-index: 10;//Es para que se pueda seleccionar el texto con el cursor.
+
+    h2 {
+        font-size: 7rem; //Tamaño de la letra
+        color: variables.$blanco; //Color de la letra
+        margin: 0; //los margenes que están por default se quitan
+    }
+
+    p {
+        color: variables.$blanco;  //Color de la letra
+        background-color: variables.$rosa; //Color del recuadro que está alrededor del texto
+        display: inline-block; //Para que no ocupe todo el espacio por default el cuadro y sólo el necesario
+        padding: 1rem 2rem; //Para el grosor del cuadro
+        font-size: 2.4rem; //Tamaño de la letra
+        font-weight: bold;//Para que las letras estén en negritas (o igual 700)
+        margin: 0;//Para que no haya espacio entre el texto y el cuadro
+    }
+}

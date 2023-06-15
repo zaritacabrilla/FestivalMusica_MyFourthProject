@@ -1,0 +1,58 @@
+@use 'base/variables'; //Para poder usar las variables hay que importar la carpeta y el archivo
+@use 'base/mixins';
+
+.header {
+    background-color: variables.$verde;
+
+    h1 {
+        color: variables.$blanco;
+        text-align: center;
+
+        @include mixins.tablet {
+            margin: 0; //Para que los margenes que se crean en automático se quiten sólo en el tamaño de tablet
+        }
+    }
+
+    .contenedor-header {
+        padding: 2rem; //Margenes de todos los lados del texto
+
+        @include mixins.tablet {
+            //Para que sólo se presenten en el tamaño de la tablet en adelante
+            display: flex; //Para que se dividan a la mitad
+            justify-content: space-between; //Para que pase el titulo a la derecha y la nave. a la izquierda
+            align-items: center;
+        }
+    }
+}
+
+.navegacion-principal {
+    @include mixins.tablet {
+        display: flex; //Para que la navegación este en horizontal de izquierda a derecha
+        gap: 2rem;
+    }
+
+    a {
+        @include mixins.tablet {
+            margin: 0;
+        }
+
+        display: block; //Para que el navegador se coloque de arriba hacia abajo
+        text-align: center;
+        color: variables.$blanco;
+        font-size: 2.4rem;
+        margin-bottom: 1rem;
+
+        &:hover {
+            //El ampersand sirve para que se quite el espacio que se crea automáticamente y sea (a:hover)
+            color: variables.$amarillo;
+        }
+    }
+}
+
+// .prueba {
+//     @include mixins.heading(variables.$amarillo, true);
+// }
+
+// .texto {
+//     @include mixins.heading;
+// }
